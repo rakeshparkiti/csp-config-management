@@ -5,4 +5,5 @@ metadata:
 spec:
   selector:
     matchLabels:
+      clustertype: gke
       location: us-central1-b
