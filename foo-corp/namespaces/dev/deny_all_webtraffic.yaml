@@ -10,3 +10,4 @@ spec:
       run: nginx-dev
   policyTypes:
   - Ingress
+  - Egress
