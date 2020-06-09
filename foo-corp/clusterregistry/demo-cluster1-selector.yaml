@@ -1,0 +1,8 @@
+kind: ClusterSelector
+apiVersion: configmanagement.gke.io/v1
+metadata:
+  name: demo-cluster1-selector
+spec:
+  selector:
+    matchLabels:
+      location: us-central1-b
