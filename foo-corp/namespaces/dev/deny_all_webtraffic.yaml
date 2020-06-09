@@ -5,6 +5,8 @@ metadata:
   name: default-deny-ingress
   namespace: dev
 spec:
-  podSelector: {}
+  podSelector:
+    matchLabels:
+      run: nginx-dev
   policyTypes:
   - Ingress
