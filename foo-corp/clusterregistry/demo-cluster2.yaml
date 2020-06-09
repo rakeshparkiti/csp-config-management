@@ -4,5 +4,5 @@ apiVersion: clusterregistry.k8s.io/v1alpha1
 metadata:
   name: demo-cluster2
   labels:
-    clusterType: GKE
+    clustertype: gke
     location: us-central1-c
