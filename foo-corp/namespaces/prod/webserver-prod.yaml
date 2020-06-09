@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: nginx-prod
+  name: nginx-prod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: nginx-prod
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        run: nginx-prod
+    spec:
+      containers:
+      - image: nginx
+        name: nginx-prod-container
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-prod-service
+  labels:
+    run: nginx-prod
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    run: nginx-prod
