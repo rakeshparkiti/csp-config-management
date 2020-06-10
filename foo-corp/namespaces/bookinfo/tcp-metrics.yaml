@@ -4,7 +4,7 @@ apiVersion: config.istio.io/v1alpha2
 kind: instance
 metadata:
   name: mongosentbytes
-  namespace: default
+  namespace: bookinfo
 spec:
   compiledTemplate: metric
   params:
@@ -21,7 +21,7 @@ apiVersion: config.istio.io/v1alpha2
 kind: instance
 metadata:
   name: mongoreceivedbytes
-  namespace: default
+  namespace: bookinfo
 spec:
   compiledTemplate: metric
   params:
@@ -37,20 +37,20 @@ apiVersion: config.istio.io/v1alpha2
 kind: handler
 metadata:
   name: mongohandler
-  namespace: default
+  namespace: bookinfo
 spec:
   compiledAdapter: prometheus
   params:
     metrics:
     - name: mongo_sent_bytes # Prometheus metric name
-      instance_name: mongosentbytes.instance.default # Mixer instance name (fully-qualified)
+      instance_name: mongosentbytes.instance.bookinfo # Mixer instance name (fully-qualified)
       kind: COUNTER
       label_names:
       - source_service
       - source_version
       - destination_version
     - name: mongo_received_bytes # Prometheus metric name
-      instance_name: mongoreceivedbytes.instance.default # Mixer instance name (fully-qualified)
+      instance_name: mongoreceivedbytes.instance.bookinfo # Mixer instance name (fully-qualified)
       kind: COUNTER
       label_names:
       - source_service
@@ -62,10 +62,10 @@ apiVersion: config.istio.io/v1alpha2
 kind: rule
 metadata:
   name: mongoprom
-  namespace: default
+  namespace: bookinfo
 spec:
   match: context.protocol == "tcp"
-         && destination.service.host == "mongodb.default.svc.cluster.local"
+         && destination.service.host == "mongodb.bookinfo.svc.cluster.local"
   actions:
   - handler: mongohandler
     instances:
