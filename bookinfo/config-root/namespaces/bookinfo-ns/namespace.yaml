@@ -1,0 +1,5 @@
+# creates namespace named "bookinfo-namespace"
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: bookinfo-ns

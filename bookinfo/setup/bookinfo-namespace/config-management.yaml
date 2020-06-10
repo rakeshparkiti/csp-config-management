@@ -1,0 +1,12 @@
+apiVersion: configmanagement.gke.io/v1
+kind: ConfigManagement
+metadata:
+  name: config-management
+  namespace: config-management-system
+spec:
+  clusterName: spacex
+  git:
+    syncRepo: git@github.com:rakeshparkiti/cis-demo-repo.git
+    syncBranch: 1.0.0
+    secretType: ssh
+    policyDir: "bookinfo/config-root"

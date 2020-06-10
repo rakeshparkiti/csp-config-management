@@ -1,0 +1,8 @@
+# applies location and environment labels to cluster
+kind: Cluster
+apiVersion: clusterregistry.k8s.io/v1alpha1
+metadata:
+  name: demo-cluster1
+  labels:
+    clustertype: gke
+    location: us-central1-b
